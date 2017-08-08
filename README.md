@@ -9,4 +9,7 @@ composer install
 # Start dev server
 composer dump-autoload -o
 php -t public/ -S localhost:8000 public/index.php
+
+# Build static HTML version
+php vendor/oal/babble/src/cli.php build
 ```
