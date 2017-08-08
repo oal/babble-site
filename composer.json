@@ -1,0 +1,5 @@
+{
+    "require": {
+        "oal/babble": "dev-master"
+    }
+}
