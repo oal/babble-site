@@ -1,5 +1,13 @@
 {
+    "repositories": [
+        {
+            "type": "path",
+            "url": "../babble"
+        }
+    ],
     "require": {
-        "oal/babble": "dev-master"
+        "oal/babble": "*",
+        "aptoma/twig-markdown": "^3.0",
+        "michelf/php-markdown": "^1.7"
     }
 }

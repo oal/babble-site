@@ -1,0 +1,20 @@
+name: Documentation Page
+hierarchical: true
+options:
+    admin:
+        icon: pencil
+        list_display:
+        - id
+        - title
+
+fields:
+    title:
+        name: Title
+        type: text
+
+    content:
+        name: Body
+        type: list
+        options:
+          blocks:
+          - Section

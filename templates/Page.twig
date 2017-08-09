@@ -6,7 +6,7 @@
     <div id="content">
         <h1>{{ this.title }}</h1>
         <div>
-            {{ this.body }}
+            {{ this.body|markdown }}
         </div>
     </div>
 {% endblock %}

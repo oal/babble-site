@@ -1,0 +1,12 @@
+name: Section
+
+fields:
+    title:
+        name: Heading
+        type: text
+
+    body:
+        name: Text
+        type: text
+        options:
+            multiline: true

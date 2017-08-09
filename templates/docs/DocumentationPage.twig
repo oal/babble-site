@@ -1,0 +1,25 @@
+{% extends '_base.twig' %}
+
+{% block title %}{{ this.title }}{% endblock %}
+
+{% block body %}
+    <div id="content">
+        <h1>{{ this.title }}</h1>
+        <div>
+            <ul>
+            {% for docPage in DocumentationPage.all() %}
+                <li><a href="/docs/{{ docPage.id }}">{{ docPage.title }}</a></li>
+            {% endfor %}
+            </ul>
+
+            {% for section in this.content %}
+                <div>
+                    <h3>{{ section.title }}</h3>
+                    <div>
+                        {{ section.body|markdown }}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
