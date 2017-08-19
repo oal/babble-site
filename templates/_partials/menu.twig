@@ -3,7 +3,7 @@
     <ul>
         {% for page in Page.orderBy('title', 'desc') %}
             <li>
-                <a href="/{{ page.id == 'index' ? '' : page.id }}">{{ page.title }}</a>
+                <a href="{{ page.getAbsoluteURL() }}">{{ page.title }}</a>
             </li>
         {% endfor %}
         <li><a href="/docs/">Documentation</a></li>

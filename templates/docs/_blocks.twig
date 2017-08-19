@@ -24,12 +24,12 @@
             <ul>
             {% for docPage in DocumentationPage.all() %}
                 <li>
-                    <a href="/docs/{{ docPage.id }}">{{ docPage.title }}</a>
+                    <a href="{{ docPage.getAbsoluteURL() }}">{{ docPage.title }}</a>
 
                     {% if docPage.children().count() > 0 %}
                         <ul>
                             {% for subPage in docPage.children() %}
-                                <li><a href="/docs/{{ subPage.id }}">{{ subPage.title }}</a></li>
+                                <li><a href="{{ subPage.getAbsoluteURL() }}">{{ subPage.title }}</a></li>
                             {% endfor %}
                         </ul>
                     {% endif %}
