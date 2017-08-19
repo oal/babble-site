@@ -7,6 +7,4 @@ fields:
 
     body:
         name: Text
-        type: text
-        options:
-            multiline: true
+        type: markdown

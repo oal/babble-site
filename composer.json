@@ -6,8 +6,6 @@
         }
     ],
     "require": {
-        "oal/babble": "*",
-        "aptoma/twig-markdown": "^3.0",
-        "michelf/php-markdown": "^1.7"
+        "oal/babble": "*"
     }
 }
