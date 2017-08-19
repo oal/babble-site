@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html amp>
+<head>
+    <meta charset="utf-8">
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+    <title>{% block title %}Welcome {% endblock %} - {{ Site.title }}</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+    <link rel="canonical" href="{% if path.getFilename() == 'index' %}/{% else %}{{ path.getWithoutExtension() }}{% endif %}">
+    <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+    <style amp-custom>
+        body {
+            font-family: sans-serif;
+        }
+
+        a {
+            color: #053a4c;
+        }
+
+        #header {
+            background: #053a4c;
+        }
+
+        #header h2 {
+            margin: 0;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        #header ul {
+            margin: 0;
+            padding: 0;
+        }
+
+        #header li {
+            display: block;
+        }
+
+        #header li a {
+            color: #fff;
+            padding: 0.75rem 1rem;
+            display: block;
+            background: rgba(255, 255, 255, 0.05);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        #jumbo {
+            padding: 1rem;
+            color: #fff;
+            background: #053a4c;
+        }
+
+        #content {
+            padding: 1rem;
+        }
+
+        #sidebar {
+            background: #fafafa;
+            padding: 1rem;
+        }
+
+        #footer {
+            background-color: #eee;
+            text-align: center;
+            padding: 2rem;
+        }
+    </style>
+</head>
+<body>
+
+<header id="header">
+    <h2>
+        <a href="/">
+            <amp-img src="/static/logo.svg" alt="Babble CMS" width="205" height="65">
+        </a>
+    </h2>
+    {% include '_partials/menu.twig' %}
+</header>
+
+{% block body %}{% endblock %}
+
+<footer id="footer">
+    Powered by Babble CMS.
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,48 @@
+{% block title %}{{ this.title }} - Documentation{% endblock %}
+
+{% block head %}
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-dark.min.css">
+{% endblock %}
+
+{% block body %}
+    <div id="doc-content">
+        <div id="content">
+            <h1>{{ this.title }}</h1>
+            <div>
+                {% for section in this.content %}
+                    <div class="doc-block">
+                        <h2>{{ section.title }}</h2>
+                        <div class="doc-block-content">
+                            {{ section.body }}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div id="sidebar">
+            <h3>Documentation</h3>
+            <ul>
+            {% for docPage in DocumentationPage.all() %}
+                <li>
+                    <a href="/docs/{{ docPage.id }}">{{ docPage.title }}</a>
+
+                    {% if docPage.children().count() > 0 %}
+                        <ul>
+                            {% for subPage in docPage.children() %}
+                                <li><a href="/docs/{{ subPage.id }}">{{ subPage.title }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </li>
+            {% endfor %}
+            </ul>
+        </div>
+    </div>
+{% endblock %}
+
+{% block bottom %}
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/yaml.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/twig.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+{% endblock %}

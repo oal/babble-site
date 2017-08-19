@@ -1,0 +1,6 @@
+name: 'Website settings'
+single: true
+fields:
+    title:
+        name: 'Title'
+        type: text

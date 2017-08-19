@@ -1,12 +1,2 @@
 {% extends '_base.twig' %}
-
-{% block title %}{{ this.title }}{% endblock %}
-
-{% block body %}
-    <div id="content">
-        <h1>{{ this.title }}</h1>
-        <div>
-            {{ this.body|markdown }}
-        </div>
-    </div>
-{% endblock %}
+{% use '_Page.twig' %}
