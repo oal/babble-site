@@ -8,6 +8,11 @@ content:
     -
         type: Section
         value:
+            title: 'Live reload'
+            body: "Developing a Babble site is mostly about editing Yaml (models and content), Twig (templates) and CSS files.\n\nTo provide the fastest possible workflow, Babble integrates with Livereload. Launch a Livereload compatible server, start Babble with the `--live-reload` flag, and the browser will automatically refresh when project files change.\n\n### Example: Using \"livereload\" from NPM\nRemember: You can use any Livereload compatible server or application. For this example, we'll use the `livereload` package from NPM.\n\nFirst, we'll install `livereload`:\n```bash\nnpm install -g livereload\n```\n\nNow we can start the `livereload` server and tell it to watch for changes in our project:\n```bash\nlivereload \"content, templates, public\" --exts \"twig, yaml\"\n```\n\nLastly, start the Babble development server with the `live-reload` flag:\n```bash\nphp babble serve --live-reload\n```"
+    -
+        type: Section
+        value:
             title: 'Deploying Babble'
             body: "When you want to publish your Babble website, the web server's user needs write access to a few directories in order for it to store uploaded files, cache, and update your site's content.\n\n```bash\nmkdir public/uploads\nsudo chmod www-data public/uploads\n\nsudo chown -R www-data content\nsudo chown -R www-data cache\n```\n\nIf you want to use Babble's image cropping functionality, you need either GD or Imagick installed for PHP. On an Ubuntu server, you can run `sudo apt install php-imagick`."
     -
