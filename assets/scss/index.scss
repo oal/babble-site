@@ -1,0 +1,33 @@
+#jumbo {
+    background-color: #0b4154;
+    color: #fafafa;
+    text-align: center;
+    padding: 7rem 0 8rem 0;
+    font-size: 140%;
+    font-weight: lighter;
+    text-shadow: 0 2px 0 #000;
+    line-height: initial;
+    h1 {
+        font-weight: lighter;
+        margin: 0;
+        color: #fff;
+        &:after {
+            content: ' ';
+            display: block;
+            width: 40px;
+            border-bottom: 5px solid #fff;
+            margin: 4rem auto;
+        }
+    }
+    ul {
+        display: flex;
+        justify-content: center;
+        padding: 0;
+        margin: 0;
+        font-style: italic;
+    }
+    li {
+        display: inline;
+        padding: 0 1rem;
+    }
+}

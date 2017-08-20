@@ -1,0 +1,38 @@
+@media(max-width: 667px) {
+    #header {
+        flex-wrap: wrap;
+        padding: 1rem;
+        h2 {
+            width: 100%;
+            text-align: center;
+        }
+        li {
+            width: 100%;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            a {
+                padding: 1rem;
+                display: block;
+                width: 100%;
+            }
+        }
+    }
+    #jumbo ul {
+        flex-wrap: wrap;
+    }
+    #doc-content {
+        flex-wrap: wrap-reverse;
+        background: transparent;
+    }
+    #content,
+    #sidebar {
+        width: 100%;
+    }
+    #sidebar {
+        border: 0;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    #content {
+        padding: 1rem;
+        box-sizing: border-box;
+    }
+}
