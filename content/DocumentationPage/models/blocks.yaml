@@ -1,5 +1,17 @@
 title: 'Model Blocks'
 content:
-    - { type: Section, value: { title: Introduction, body: "**Model Blocks** are used with the `list` field type. They are a lot like regular models, but somewhat more restricted. They can have names and fields, but any other property, like `hierarchical` or `single` will not work.\n\nBlocks are stored inside the `models/blocks/` directory of your project." } }
-    - { type: Section, value: { title: 'Model Block example', body: "**models/blocks/Employee.yaml**\n```yaml\nname: Employee\nfields:\n\tname:\n    \tname: 'Full name'\n    \ttype: text\n    role:\n    \tname: 'Role'\n    \ttype: text\n    phone:\n    \tname: 'Phone number'\n        type: text\n```" } }
-    - { type: Section, value: { title: 'Using a Model Block in a Model', body: "**models/Employees.yaml**\n```\nname: 'Employees'\nsingle: true\nfields:\n\temployees:\n    \ttype: list\n        options:\n        \tblocks:\n            - Employee\n```" } }
+    -
+        type: Section
+        value:
+            title: Introduction
+            body: "**Model Blocks** are used with the `list` field type. They are a lot like regular models, but somewhat more restricted. They can have names and fields, but any other property, like `hierarchical` or `single` will not work.\n\nBlocks are stored inside the `models/blocks/` directory of your project."
+    -
+        type: Section
+        value:
+            title: 'Model Block example'
+            body: "**models/blocks/Employee.yaml**\n```yaml\nname: Employee\nfields:\n\tname:\n    \tname: 'Full name'\n    \ttype: text\n    role:\n    \tname: 'Role'\n    \ttype: text\n    phone:\n    \tname: 'Phone number'\n        type: text\n```"
+    -
+        type: Section
+        value:
+            title: 'Using a Model Block in a Model'
+            body: "**models/Employees.yaml**\n```\nname: 'Employees'\nsingle: true\nfields:\n\temployees:\n    \ttype: list\n        options:\n        \tblocks:\n            - Employee\n```"

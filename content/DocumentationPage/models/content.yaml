@@ -1,3 +1,7 @@
 title: Content
 content:
-    - { type: Section, value: { title: Introduction, body: "Content maps data to models, and is stored in the \"content\" directory. It must contain one directory for each model type, so you may have \"/content/Page/\", to put Pages inside. Content files also use YAML, and you use the field keys from the model to specify content for each field.\n\n**/content/Page/index.yaml**\n```yaml\ntitle: Home\nbody: 'This simple demo site is built with Babble. You can use it as a base for your own website, or start from scratch.'\n```" } }
+    -
+        type: Section
+        value:
+            title: Introduction
+            body: "Content maps data to models, and is stored in the \"content\" directory. It must contain one directory for each model type, so you may have \"/content/Page/\", to put Pages inside. Content files also use YAML, and you use the field keys from the model to specify content for each field.\n\n**/content/Page/index.yaml**\n```yaml\ntitle: Home\nbody: 'This simple demo site is built with Babble. You can use it as a base for your own website, or start from scratch.'\n```"
