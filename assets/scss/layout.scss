@@ -47,12 +47,12 @@ code {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 1rem 2rem;
+    padding: 0 2rem;
     h2 {
         margin: 0;
     }
     img {
-        width: 180px;
+        width: 160px;
         margin-top: -0.3rem;
     }
     ul {
@@ -68,6 +68,15 @@ code {
             color: #fafafa;
             text-decoration: none;
             opacity: 0.6;
+            transition: all 0.25s;
+            text-shadow: 0 1px 0 #000;
+            &:hover {
+                opacity: 1;
+                background-color: #0b4154;
+            }
+        }
+        &.active {
+            background-color: #0b4154;
         }
     }
 }

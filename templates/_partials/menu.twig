@@ -2,11 +2,13 @@
 <nav>
     <ul>
         {% for page in Page.orderBy('title', 'desc') %}
-            <li>
+            <li{% if path.isExactly(page.getAbsoluteURL()) %} class="active"{% endif %}>
                 <a href="{{ page.getAbsoluteURL() }}">{{ page.title }}</a>
             </li>
         {% endfor %}
-        <li><a href="/docs/">Documentation</a></li>
+        <li {% if path.is('/docs') %} class="active"{% endif %}>
+            <a href="/docs/">Documentation</a>
+        </li>
     </ul>
 </nav>
 {% endspaceless %}

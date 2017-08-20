@@ -45,4 +45,9 @@
     a {
         color: #087da5
     }
+
+    li.active > a {
+        color: #000;
+        text-decoration: none;
+    }
 }
