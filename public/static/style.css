@@ -24,6 +24,13 @@ p,
 pre {
   margin: 0 0 1.25rem 0; }
 
+p > code {
+  color: #087da5;
+  font-weight: bold; }
+
+code {
+  font-family: 'Source Code Pro', monospace; }
+
 #content,
 #footer {
   padding: 4rem 2rem; }
