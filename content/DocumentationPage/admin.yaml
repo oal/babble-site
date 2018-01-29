@@ -1,0 +1,16 @@
+title: '6. Admin'
+content:
+    -
+        type: Section
+        value:
+            title: Introduction
+            body: 'Babble comes with an easy to use control panel for managing the site''s content. A custom interface is automatically generated for all models.'
+    -
+        type: Section
+        value:
+            title: Screenshot
+            body: |
+                The admin interface is currently available in two languages: English and Norwegian Bokmål (shown in the screenshot below).
+                
+                ![Babble admin interface](/uploads/admin.png "Babble admin interface")
+                

@@ -1,4 +1,4 @@
-title: Templates
+title: '5. Templates'
 content:
     -
         type: Section
@@ -9,9 +9,121 @@ content:
         type: Section
         value:
             title: 'Available classes and variables'
-            body: "In any template, you have access to a few classes and variables.\n\n### path (the `Path` class)\nThe `path` variable contains information about the current path / URL. It has the following methods:\n\n#### path.is(url)\nUsed to check if the current path matches the specified URL. This is often used to highlight the currently active link in a menu.\n\n**Example usage:**\n```twig\n<a href=\"{{ this.getAbsoluteURL() }}\" {% if path.is(this.getAbsoluteURL()) %} class=\"active\"{% endif %}>{{ page.title }}</a>\n```\n\n#### path.isExactly(url)\nSimilar to the above, except that it only returns `true` if the given URL matches the current path exactly. `path.is` also matches if it starts with the current path.\n\n#### path.getExtension()\nTemplate files may specify an extension, as in `Page.html.twig` for when you want to match routes like `about.html`. `path.getExtension()` returns this pseudo-extension. If there is no extension (`Page.twig`) an empty string is returned.\n\n### this (`Record`)\nWhen using template names that map directly to models, like if you have a model called `Page`, and a template called `Page.twig`, `this` will automatically get bound to the matching `Page` record.\n\nYou can access any of the fields of a record simply by accessing them using dot notation (like `this.title`).\n\n#### this.getAbsoluteURL()\nThis method will, based on the record's model type and your template structure, return the absolute URL where the record can be viewed. If more than one URLs match a resource, the shortest one is returned.\n\n### Models\nAny valid model can be queried, to retrieve records. If you have a `Page` model, you can do:\n\n```twig\n{% for page in Page.all() %} ... {% endfor %}\n```\n\nYou can also specify filters, ordering etc. similar to Laravel's ORM.\n\n#### Model.where(field, comparison, value)\n```js\nPost.where('is_draft', '=', false)\n```\nAvailable comparisons are:\n\n- =\n- !=\n- <\n- <=\n- >\n- >=\n\n#### Model.orderBy(field, direction)]\n```js\nPost.orderBy('published_at', 'desc')\n```\n\nThe `direction` argument can be either `asc` (ascending) or `desc` (descending)."
+            body: |
+                In any template, you have access to a few classes and variables.
+                
+                ### path (the `Path` class)
+                The `path` variable contains information about the current path / URL. It has the following methods:
+                
+                #### path.is(url)
+                Used to check if the current path matches the specified URL. This is often used to highlight the currently active link in a menu.
+                
+                **Example usage:**
+                ```twig
+                <a href="{{ this.permalink }}" {% if path.is(this.permalink) %} class="active"{% endif %}>{{ page.title }}</a>
+                ```
+                
+                #### path.isExactly(url)
+                Similar to the above, except that it only returns `true` if the given URL matches the current path exactly. `path.is` also matches if it starts with the current path.
+                
+                #### path.getExtension()
+                Template files may specify an extension, as in `Page.html.twig` for when you want to match routes like `about.html`. `path.getExtension()` returns this pseudo-extension. If there is no extension (`Page.twig`) an empty string is returned.
+                
+                ### this (`Record`)
+                When using template names that map directly to models, like if you have a model called `Page`, and a template called `Page.twig`, `this` will automatically get bound to the matching `Page` record.
+                
+                You can access any of the fields of a record simply by accessing them using dot notation (like `this.title`).
+                
+                ### abort()
+                If `abort()` is called at any time during the page render, Babble will look for another possible match for the current URL. If none is found, a 404 response is returned.
+                
+                ### Models
+                Any valid model can be queried, to retrieve records. If you have a `Page` model, you can do:
+                
+                ```twig
+                {% for page in Page.all() %} ... {% endfor %}
+                ```
+                
+                You can also specify filters, ordering etc. similar to Laravel's ORM.
+                
+                #### Model.where(field, comparison, value)
+                ```js
+                Post.where('is_draft', '=', false)
+                ```
+                Available comparisons are:
+                
+                - =
+                - !=
+                - <
+                - <=
+                - >
+                - >=
+                
+                #### Model.orderBy(field, direction)]
+                ```js
+                Post.orderBy('published_at', 'desc')
+                ```
+                
+                The `direction` argument can be either `asc` (ascending) or `desc` (descending).
+                
     -
         type: Section
         value:
-            body: "\n\n\n**/templates/_base.twig**\n```twig\n<html>\n<head>\n    <title>{% block title %}{% endblock %} - {{ Site.title }}</title>\n    <link rel=\"stylesheet\" href=\"/static/main.css\">\n</head>\n<body>\n\n<header id=\"header\">\n    <h2>\n        <a href=\"/\">\n            <img src=\"/static/logo.svg\" alt=\"{{ Site.title }}\">\n        </a>\n    </h2>\n    <nav>\n        <ul>\n            {% for page in Page.all() %}\n                <li>\n                    <a href=\"{{ page.getAbsoluteURL() }}\">{{ page.title }}</a>\n                </li>\n            {% endfor %}\n        </ul>\n    </nav>\n</header>\n\n{% block body %}\n{% endblock %}\n\n<footer id=\"footer\">\n    Powered by Babble CMS.\n</footer>\n\n</body>\n</html>\n```\n\n**/templates/Page.twig**\n```twig\n{% extends '_base.twig' %}\n\n{% block title %}{{ this.title }}{% endblock %}\n\n{% block body %}\n    <div id=\"content\">\n        <h1>{{ this.title }}</h1>\n        <div>\n            {{ this.body }}\n        </div>\n    </div>\n{% endblock %}\n```"
+            body: |
+                
+                
+                
+                **/templates/_base.twig**
+                ```twig
+                <html>
+                <head>
+                    <title>{% block title %}{% endblock %} - {{ Site.title }}</title>
+                    <link rel="stylesheet" href="/static/main.css">
+                </head>
+                <body>
+                
+                <header id="header">
+                    <h2>
+                        <a href="/">
+                            <img src="/static/logo.svg" alt="{{ Site.title }}">
+                        </a>
+                    </h2>
+                    <nav>
+                        <ul>
+                            {% for page in Page.all() %}
+                                <li>
+                                    <a href="{{ page.permalink }}">{{ page.title }}</a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </nav>
+                </header>
+                
+                {% block body %}
+                {% endblock %}
+                
+                <footer id="footer">
+                    Powered by Babble CMS.
+                </footer>
+                
+                </body>
+                </html>
+                ```
+                
+                **/templates/Page.twig**
+                ```twig
+                {% extends '_base.twig' %}
+                
+                {% block title %}{{ this.title }}{% endblock %}
+                
+                {% block body %}
+                    <div id="content">
+                        <h1>{{ this.title }}</h1>
+                        <div>
+                            {{ this.body }}
+                        </div>
+                    </div>
+                {% endblock %}
+                ```
+                
             title: Examples

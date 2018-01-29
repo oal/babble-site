@@ -1,17 +1,60 @@
-title: Routing
+title: '4. Routing'
 content:
     -
         type: Section
         value:
-            body: "Babble uses templates for request routing. Templates are written in Twig, and are stored inside the project's `templates` directory. Requests are routed based on the templates' file names, in one of three ways.\n"
+            body: |
+                Babble uses templates for request routing. Templates are written in Twig, and are stored inside the project's `templates` directory. Requests are routed based on the templates' file names, in one of three ways.
+                
             title: Introduction
     -
         type: Section
         value:
             title: 'Routing rules'
-            body: "### Direct mapping by URL\nThis is the simplest and most straight-forward way Babble handles routing. Template files starting with a lowercase letter are rendered directly. So if you have a file called \"about.twig\", and go to \"yoursite.tld/about\", this page will be loaded.\n\n### Mapping models by record IDs\nFiles starting with an uppercase letter are mapped to models. If you have a file called \"Page.twig\", it will match all records of the `Page` model based on ID. If you have a content file `content/Page/contact.yaml`, `example.com/contact` will load this page. Inside capitalized template files, \"this\" is bound to the matching record, so you can use `{{ this.title }}` to show the contact page's title in this example.\n\n### Hidden files\nFiles starting with \"_\". These are ignored. These may be used to store the site's overall layout, and for partial templates you want to include from elsewhere. Typically you want a `_base.twig` file that contains the page's header and footer, and extend from this. See the Template documentation for more on this."
+            body: |
+                ### Direct mapping by URL
+                This is the simplest and most straight-forward way Babble handles routing. Template files starting with a lowercase letter are rendered directly. So if you have a file called `about.twig`, and go to `example.com/about`, this page will be loaded.
+                
+                ### Mapping models by record IDs
+                Files starting with an uppercase letter are mapped to models. If you have a file called `Page.twig`, it will match all records of the `Page` model based on ID. If you have a content file `content/Page/contact.yaml`, `example.com/contact` will load this page. Inside capitalized template files, the `this` variable is bound to the matching record, so you can use `{{ this.title }}` to show the contact page's title in this example.
+                
+                ### Variable mapping
+                Directory names starting with `$` are treated as variables, and can take any value. A common use case is mapping blog posts by year, month and day. In this case you can have a model template stored in `templates/$year/$month/$day/BlogPost.twig`. These variables can then be accessed using something like `{{ route.get('year') }}` inside your templates.
+                
+                ### Hidden files
+                Files starting with "_". These are ignored. These may be used to store the site's overall layout, and for partial templates you want to include from elsewhere. Typically you want a `_base.twig` file that contains the page's header and footer, and extend from this. See the Template documentation for more on this.
+                
     -
         type: Section
         value:
             title: 'Routing example'
-            body: "```\ncontent/\n\tPage/\n    \tindex.yaml\n        about.yaml\nmodels/\n\tPage.yaml\ntemplates/\n\t_base.twig\n    Page.twig\n    contact.twig\n\tindex.twig\n```\n\nThe above shows the file structure of a simple Babble site. First, we have a `Page` model. Inside the `content` directory, there are two `Page` records: `index` and `about`.\n\nIn the `templates` directory, we have a file called `Page.twig`. Whenever a request comes in, Babble will look for a `Page` record with whatever ID is requested (/about maps to the Page with ID \"about\").\n\nThere is one important exception to this rule, however, and that is that you can override this behavior by creating templates that have the same name as the ID of a matching record. Specifically, the example contains a template called `index.twig`, but there's also a `Page` record with the same ID. In such cases, `index.twig` wins, and gets rendered.\n\nThe `contact.twig` template will be rendered when `/contact` is requested. `_base.twig`, on the other hand, will not be reachable this way, because it is a hidden template file."
+            body: |
+                ```yaml
+                content/
+                	Page/
+                    	index.yaml
+                        about.yaml
+                    BlogPost/
+                    	hello-world.yaml
+                models/
+                	Page.yaml
+                    BlogPost.yaml
+                templates/
+                	$year/
+                    	$month/
+                        	$day/
+                            	BlogPost.twig
+                	_base.twig
+                    Page.twig
+                    contact.twig
+                	index.twig
+                ```
+                
+                The above shows the file structure of a simple Babble site. First, we have a `Page` and `BlogPost` models. Inside the `content` directory, there is a blog post and two `Page` records: `index` and `about`.
+                
+                In the `templates` directory, we have a file called `Page.twig`. Whenever a request comes in, Babble will look for a `Page` record with whatever ID is requested (/about maps to the Page with ID "about").
+                
+                There is one important exception to this rule, however, and that is that you can override this behavior by creating templates that have the same name as the ID of a matching record. Specifically, the example contains a template called `index.twig`, but there's also a `Page` record with the same ID. In such cases, `index.twig` wins, and gets rendered.
+                
+                The `contact.twig` template will be rendered when `/contact` is requested. `_base.twig`, on the other hand, will not be reachable this way, because it is a hidden template file.
+                

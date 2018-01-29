@@ -2,7 +2,7 @@ name: Page
 hierarchical: true
 options:
     admin:
-        icon: database
+        icon: language
         list_display:
         - id
         - title
@@ -15,3 +15,6 @@ fields:
     body:
         name: Body
         type: markdown
+
+properties:
+    permalink: '/{% if this.id != "index" %}{{ this.id }}/{% endif %}'

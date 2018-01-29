@@ -22,15 +22,15 @@
         <div id="sidebar">
             <h3>Documentation</h3>
             <ul>
-            {% for docPage in DocumentationPage.all() %}
-                <li {% if path.isExactly(docPage.getAbsoluteURL()) %} class="active"{% endif %}>
-                    <a href="{{ docPage.getAbsoluteURL() }}">{{ docPage.title }}</a>
+            {% for docPage in DocumentationPage.orderBy('title', 'asc') %}
+                <li {% if path.isExactly(docPage.permalink) %} class="active"{% endif %}>
+                    <a href="{{ docPage.permalink }}">{{ docPage.title }}</a>
 
                     {% if docPage.children().count() > 0 %}
                         <ul>
                             {% for subPage in docPage.children() %}
-                                <li {% if path.isExactly(subPage.getAbsoluteURL()) %} class="active"{% endif %}>
-                                    <a href="{{ subPage.getAbsoluteURL() }}">{{ subPage.title }}</a>
+                                <li {% if path.isExactly(subPage.permalink) %} class="active"{% endif %}>
+                                    <a href="{{ subPage.permalink }}">{{ subPage.title }}</a>
                                 </li>
                             {% endfor %}
                         </ul>

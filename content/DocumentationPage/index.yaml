@@ -1,22 +1,113 @@
-title: 'Getting started'
+title: '1. Getting started'
 content:
     -
         type: Section
         value:
             title: Installation
-            body: "When getting started with Babble, it is recommended to use [babble-quickstart](https://github.com/oal/babble-quickstart) as a starting point.\n\n### Downloading the quickstart project\nYou can either use `git` to clone the Quickstart project, or you can [download it as a zip file](https://github.com/oal/babble-quickstart/archive/master.zip).\n\n\n```bash\ngit clone https://github.com/oal/babble-quickstart.git my-project\ncd my-project\n```\n\n### Installing dependencies\nThe next step of the process is to install Babble into your project. This is done with PHP's package manager `composer`, as follows:\n\n```bash\ncomposer install\ncomposer dump-autoload -o\n```\n\n### Installing Babble Admin\nTo install Babble Admin, you have to either clone the `babble-admin` repository using Git, [or download the zip](https://github.com/oal/babble-admin) (similar to setting up the quickstart project above).\n\n```bash\ncd my-project\nmkdir assets\ncd assets\ngit clone https://github.com/oal/babble-admin.git admin\n```\n\nWhen the above commands have completed, enter the `admin` directory, and run `npm install`. Finally run `npm run production`. This will output the Admin files to `public/admin`, and will then be available at `http://localhost:8000/admin/` (or wherever you run Babble from).\n\n```bash\ncd admin\nnpm install\nnpm run production\n```\n\n_**Note:** There will likely be an easier way of installing both Babble and Babble Admin in the future, once a stable version is released._"
+            body: |
+                When getting started with Babble, it is recommended to use [babble-quickstart](https://github.com/oal/babble-quickstart) as a starting point.
+                
+                ### Downloading the quickstart project
+                You can either use `git` to clone the Quickstart project, or you can [download it as a zip file](https://github.com/oal/babble-quickstart/archive/master.zip).
+                
+                
+                ```bash
+                git clone https://github.com/oal/babble-quickstart.git my-project
+                cd my-project
+                ```
+                
+                ### Installing dependencies
+                The next step of the process is to install Babble into your project. This is done with PHP's package manager `composer`, as follows:
+                
+                ```bash
+                composer install
+                composer dump-autoload -o
+                ```
+                
+                ### Installing Babble Admin
+                To install Babble Admin, you have to either clone the `babble-admin` repository using Git, [or download the zip](https://github.com/oal/babble-admin) (similar to setting up the quickstart project above).
+                
+                ```bash
+                cd my-project
+                mkdir assets
+                cd assets
+                git clone https://github.com/oal/babble-admin.git admin
+                ```
+                
+                When the above commands have completed, enter the `admin` directory, and run `npm install`. Finally run `npm run production`. This will output the Admin files to `public/admin`, and will then be available at `http://localhost:8000/admin/` (or wherever you run Babble from).
+                
+                ```bash
+                cd admin
+                npm install
+                npm run production
+                ```
+                
+                _**Note:** There will likely be an easier way of installing both Babble and Babble Admin in the future, once a stable version is released._
+                
     -
         type: Section
         value:
             title: 'Live reload'
-            body: "Developing a Babble site is mostly about editing Yaml (models and content), Twig (templates) and CSS files.\n\nTo provide the fastest possible workflow, Babble integrates with Livereload. Launch a Livereload compatible server, start Babble with the `--live-reload` flag, and the browser will automatically refresh when project files change.\n\n### Example: Using \"livereload\" from NPM\nRemember: You can use any Livereload compatible server or application. For this example, we'll use the `livereload` package from NPM.\n\nFirst, we'll install `livereload`:\n```bash\nnpm install -g livereload\n```\n\nNow we can start the `livereload` server and tell it to watch for changes in our project:\n```bash\nlivereload \"content, templates, public\" --exts \"twig, yaml\"\n```\n\nLastly, start the Babble development server with the `live-reload` flag:\n```bash\nphp babble serve --live-reload\n```"
+            body: |
+                Developing a Babble site is mostly about editing Yaml (models and content), Twig (templates) and CSS files.
+                
+                To provide the fastest possible workflow, Babble integrates with Livereload. Launch a Livereload compatible server, start Babble with the `--live-reload` flag, and the browser will automatically refresh when project files change.
+                
+                ### Example: Using "livereload" from NPM
+                Remember: You can use any Livereload compatible server or application. For this example, we'll use the `livereload` package from NPM.
+                
+                First, we'll install `livereload`:
+                ```bash
+                npm install -g livereload
+                ```
+                
+                Now we can start the `livereload` server and tell it to watch for changes in our project:
+                ```bash
+                livereload "content, templates, public" --exts "twig, yaml"
+                ```
+                
+                Lastly, start the Babble development server with the `live-reload` flag:
+                ```bash
+                php babble serve --live-reload
+                ```
+                
     -
         type: Section
         value:
             title: 'Deploying Babble'
-            body: "When you want to publish your Babble website, the web server's user needs write access to a few directories in order for it to store uploaded files, cache, and update your site's content.\n\n```bash\nmkdir public/uploads\nsudo chmod www-data public/uploads\n\nsudo chown -R www-data content\nsudo chown -R www-data cache\n```\n\nIf you want to use Babble's image cropping functionality, you need either GD or Imagick installed for PHP. On an Ubuntu server, you can run `sudo apt install php-imagick`."
+            body: |
+                When you want to publish your Babble website, the web server's user needs write access to a few directories in order for it to store uploaded files, cache, and update your site's content.
+                
+                ```bash
+                mkdir public/uploads
+                sudo chmod www-data public/uploads
+                
+                sudo chown -R www-data content
+                sudo chown -R www-data cache
+                ```
+                
+                If you want to use Babble's image cropping functionality, you need either GD or Imagick installed for PHP. On an Ubuntu server, you can run `sudo apt install php-imagick`.
+                
     -
         type: Section
         value:
             title: 'Deploying with Babble''s static site generator'
-            body: "If you don't need to access Babble Admin, or use any dynamic features on your site, you can build a static version of your website, containing only plain HTML files. This is great for performance, as every page load simply loads a pre-built HTML file, and no PHP is needed.\n\nBuilding a static version of your website is as simple as running:\n\n```bash\nphp babble build\n```\n\nThis command creates a `build` directory inside your project, which contains everything you need to upload to your web server. Then uploading is just a matter of opening your favorite FTP client, or calling an `rsync` or `scp` command:\n\n```\nscp -r ./build/* user@yourserver:/var/www/example.com/\n```"
+            body: |
+                If you don't need to access Babble Admin, or use any dynamic features on your site, you can build a static version of your website, containing only plain HTML files. This is great for performance, as every page load simply loads a pre-built HTML file, and no PHP is needed.
+                
+                Building a static version of your website is as simple as running:
+                
+                ```bash
+                php babble build
+                ```
+                
+                This command creates a `build` directory inside your project, which contains everything you need to upload to your web server. Then uploading is just a matter of opening your favorite FTP client, or calling an `rsync` or `scp` command:
+                
+                ```
+                scp -r ./build/* user@yourserver:/var/www/example.com/
+                
+                # OR
+                
+                rsync -avzP --copy-links --delete -e "ssh -p 1234" build/ user@yourserver:/var/www/example.com/
+                ```
+                

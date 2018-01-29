@@ -1,5 +1,9 @@
 name: 'Website settings'
 single: true
+options:
+    admin:
+        icon: settings
+
 fields:
     title:
         name: 'Title'

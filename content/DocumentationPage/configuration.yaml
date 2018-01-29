@@ -1,0 +1,39 @@
+title: '2. Configuration'
+content:
+    -
+        type: Section
+        value:
+            title: Introduction
+            body: |
+                Configuring Babble itself is very simple: It's all YAML. The `config.yaml` file in the project root directory contains all the project wide configuration options for your Babble site.
+                
+                For now, there are only a couple of configuration options, detailed below.
+                
+    -
+        type: Section
+        value:
+            title: 'Configuration variables'
+            body: 'The only configuration variables available are `debug` and `cache`. The `debug` variable enables or disables pretty error messages and other debug related features, while the `cache` variable specifies whether or not to generate and save pages only once, and serve these static files upon later requests.'
+    -
+        type: Section
+        value:
+            title: 'Overriding configuration based on hostname'
+            body: 'The `host` block allows you to specify overrides per hostname. You may want to enable `debug`, and disable `cache` on localhost, while you want the opposite to be true in production. See the example config below.'
+    -
+        type: Section
+        value:
+            title: 'Example configuration'
+            body: |
+                Example `config.yaml`:
+                ```
+                # Default configuration.
+                debug: false
+                cache: true
+                
+                # Override configuration when served from localhost.
+                host:
+                    localhost:
+                        debug: true
+                        cache: false
+                ```
+                

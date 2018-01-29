@@ -2,7 +2,7 @@ name: Documentation Page
 hierarchical: true
 options:
     admin:
-        icon: pencil
+        icon: live_help
         list_display:
         - id
         - title
@@ -18,3 +18,6 @@ fields:
         options:
           blocks:
           - Section
+
+properties:
+    permalink: '/docs/{{ this.id }}'

@@ -1,0 +1,27 @@
+title: 'Content validation'
+content:
+    -
+        type: Section
+        value:
+            title: 'Field validation'
+            body: |
+                Content validation in Babble is based on the JSON Schema standard. Any validation options available JSON Schema can be applied to Babble fields under the `validation` property.
+                
+                [Read more about JSON Schema here](http://json-schema.org/).
+    -
+        type: Section
+        value:
+            title: Example
+            body: |
+                ```
+                fields:
+                	email:
+                    	type: text
+                        validation:
+                        	format: email # format is defined in the JSON Schema standard
+                	min_max:
+                    	type: text
+                        validation:
+                        	minLength: 2
+                            maxLength: 5
+                ```

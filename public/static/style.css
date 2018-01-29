@@ -20,6 +20,9 @@ h6 {
   margin: 1.5em 0 0.25em 0;
   color: #053a4c; }
 
+img {
+  max-width: 100%; }
+
 p,
 pre {
   margin: 0 0 1.25rem 0; }
