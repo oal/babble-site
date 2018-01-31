@@ -1,22 +1,90 @@
 {% block title %}Home{% endblock %}
 
 {% block body %}
-    {% set this = Page.find('index') %}
-
     <div id="jumbo">
-        <h1>A perfect fit for 80% of websites</h1>
-        <ul>
-            <li>Flat files</li>
-            <li>Flexible data models</li>
-            <li>Simple templating</li>
-            <li>Built-in admin</li>
-        </ul>
+        <a href="/">
+            <img src="/static/logo.svg" alt="Babble logo" width="350">
+        </a>
+        <div class="jumbo-image">
+            <a href="/docs/admin/"><img src="/uploads/admin.png" alt="Babble admin"></a>
+        </div>
     </div>
 
-    <div id="content">
-        <h1>{{ this.title }}</h1>
-        <div>
-            {{ this.body }}
+    <div class="intro">
+        <h3>What is Babble CMS?</h3>
+        <p>Babble is a content management system with a focus on high productivity and user friendliness.</p>
+    </div>
+
+    <div class="grid">
+        <div class="info-box">
+            <h2>File based</h2>
+            <p><strong>All your content and models are written in YAML</strong></p>
+            <p>
+                Edit your content and site structure at any time, using any text editor. Need a web based interface?
+                Check out <a href="/docs/admin/">Babble Admin</a>.
+            </p>
         </div>
+        <div class="info-box">
+            <h2>Written in PHP</h2>
+            <p><strong>For easy deployment and versatility</strong></p>
+            <p>
+                PHP is available almost anywhere, which means you can host your site on everything from shared hosting
+                to dedicated servers.
+            </p>
+        </div>
+        <div class="info-box">
+            <h2>Static site generator</h2>
+            <p><strong>Build standalone HTML files and deploy anywhere</strong></p>
+            <p>
+                Using your site's template structure, Babble can crawl your website and output plain HTML files. No
+                server side code required.
+            </p>
+        </div>
+        <div class="info-box">
+            <h2>Admin interface</h2>
+            <p><strong>Clean and simple admin interface for all your content</strong></p>
+            <p>
+                Model definitions are translated into a custom web interface tailored to your content. No additional
+                configuration needed.
+            </p>
+        </div>
+        <div class="info-box">
+            <h2>Template based routing</h2>
+            <p><strong>Dynamic routing based on template naming</strong></p>
+            <p>
+                The router matches routes based on a simple set of rules. Exact file matches, matches on model IDs and
+                variables give Babble sites endless possibilities.
+            </p>
+        </div>
+        <div class="info-box">
+            <h2>Twig templates</h2>
+            <p><strong>Powerful templating language</strong></p>
+            <p>
+                Instantly familiar to users of Symfony, Django, Flask (Jinja2) and more. A very powerful templating
+                language with lots of batteries included.
+            </p>
+        </div>
+        <div class="info-box">
+            <h2>Open Source</h2>
+            <p><strong>The Apache 2.0 license</strong></p>
+            <p>
+                Babble is free to use, and is licensed under one of the most permissive open source licenses available.
+                Take it, and build something great!
+            </p>
+        </div>
+        <div class="info-box">
+            <h2>Hosted on Github</h2>
+            <p><strong><a href="https://github.com/oal/babble" target="_blank">Go to the repository</a></strong></p>
+            <p>
+                Want to help make Babble even better? Feel free to submit pull requests or open issues if you face
+                problems along the way.
+            </p>
+        </div>
+    </div>
+
+    <div class="intro">
+        <a href="/docs/" class="button">
+            Learn more
+        </a>
     </div>
 {% endblock %}

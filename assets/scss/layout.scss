@@ -6,7 +6,7 @@ body {
 
 body {
   background-color: #fcfcfc;
-  color: #02151c;
+  color: darken($primary, 20%);
   font-family: 'Open Sans', sans-serif;
   margin: 0;
   line-height: 160%;
@@ -20,7 +20,11 @@ h5,
 h6 {
   font-weight: bolder;
   margin: 1.5em 0 0.25em 0;
-  color: #053a4c;
+  color: darken($primary, 3%);
+}
+
+a {
+  color: $secondary;
 }
 
 img {
@@ -41,13 +45,33 @@ code {
   font-family: 'Source Code Pro', monospace;
 }
 
+.button {
+  background-color: $primary;
+  padding: 1rem 2rem;
+  text-decoration: none;
+  display: inline-block;
+  color: #fff;
+  text-shadow: 0px 2px 4px rgba(#000, 0.2);
+  border-right: 3px;
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 1px;
+  font-size: 80%;
+  transition: 0.25s all;
+
+  &:hover {
+    background-color: lighten($primary, 5%);
+    transform: translateY(-5px);
+  }
+}
+
 #content,
 #footer {
   padding: 4rem 2rem;
 }
 
 #header {
-  background-color: #053a4c;
+  background-color: $primary;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -56,8 +80,7 @@ code {
     margin: 0;
   }
   img {
-    width: 160px;
-    margin-top: -0.3rem;
+    height: 32px;
   }
   ul {
     display: flex;
@@ -71,16 +94,17 @@ code {
       padding: 2rem;
       color: #fafafa;
       text-decoration: none;
-      opacity: 0.6;
-      transition: all 0.25s;
+      opacity: 0.8;
+      transition: all 0.5s;
       text-shadow: 0 1px 0 #000;
       &:hover {
         opacity: 1;
-        background-color: #0b4154;
       }
     }
-    &.active {
-      background-color: #0b4154;
+    &.active a, a:hover {
+      background: lighten($primary, 5%);
+      opacity: 1;
+      text-shadow: none;
     }
   }
 }
@@ -90,7 +114,6 @@ code {
   margin: 0 auto;
   background-color: #fcfcfc;
   a {
-    color: #087da5;
     border-bottom: 1px solid #ccc;
     text-decoration: none;
     font-weight: bold;

@@ -20,4 +20,4 @@ fields:
           - Section
 
 properties:
-    permalink: '/docs/{{ this.id }}'
+    permalink: '/docs/{% if this.id != "index" %}{{ this.id }}/{% endif %}'

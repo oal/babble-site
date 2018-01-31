@@ -10,7 +10,7 @@
     <meta name="google-site-verification" content="8jrmhNH0aEWVw8FyCrNDDDV1OBqWbdE8pN3F6q-GvCc" />
     {% block head %}{% endblock %}
 </head>
-<body>
+<body{% if path == '/' %} class="index"{% endif %}>
 
 <header id="header">
     <h2>
